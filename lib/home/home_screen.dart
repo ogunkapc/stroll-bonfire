@@ -129,6 +129,288 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 350.h,
+              decoration: BoxDecoration(
+                // image: DecorationImage(
+                //   image: AssetImage(AppImages.fadeBackground),
+                //   fit: BoxFit.fill,
+                // ),
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    const Color(0xFF000000),
+                    const Color(0xFF000000),
+                    const Color(0xFF121518).withOpacity(0.9),
+                  ],
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 7.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: AppColors.bottomNavBarColor)),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            top: 36.h,
+                            left: 69.w,
+                            right: 0,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    'What is your favorite time of the day?',
+                                    style: TextStyle(
+                                      color: AppColors.questionTextColor,
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                              color: AppColors.questionTextColor,
+                            )),
+                            width: 170.w,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 50.w,
+                                  top: 7.h,
+                                  right: 0,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            right: 10.w,
+                                            top: 4.h,
+                                            bottom: 4.h,
+                                            left: 10.w,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.r),
+                                              color: const Color(0xFF121518)
+                                                  .withOpacity(0.9),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  offset: const Offset(0, 14),
+                                                  blurRadius: 16.r,
+                                                  color:
+                                                      const Color(0x4D000000),
+                                                )
+                                              ]),
+                                          child: Text(
+                                            'Angelina, 28',
+                                            style: TextStyle(
+                                              color:
+                                                  AppColors.questionTextColor,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 11.sp,
+                                            ),
+                                            textAlign: TextAlign.end,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  height: 66.h,
+                                  width: 60.w,
+                                  margin: EdgeInsets.only(left: 11.w),
+                                  padding: EdgeInsets.all(5.r),
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF121517),
+                                  ),
+                                  child: ClipOval(
+                                    child: Image.asset(
+                                      AppImages.joeyImage,
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 9.h,
+                    ),
+                    Text(
+                      '"Mine is the peace in the morning."',
+                      style: TextStyle(
+                        color: AppColors.answerTextColor,
+                        fontSize: 12.sp,
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 14.h,
+                    ),
+                    Expanded(
+                      child: GridView.builder(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12.h,
+                            crossAxisSpacing: 12.w,
+                            childAspectRatio: 2.5,
+                          ),
+                          itemCount: 4,
+                          itemBuilder: (index, context) {
+                            return Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10.w, vertical: 13.h),
+                              decoration: BoxDecoration(
+                                color: AppColors.optionsCardColor,
+                                borderRadius: BorderRadius.circular(12.r),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Color(0x4D000000),
+                                    offset: Offset(-1, -1),
+                                    blurRadius: 2,
+                                  ),
+                                  BoxShadow(
+                                    color: Color(0x4D484848),
+                                    offset: Offset(1, 1),
+                                    blurRadius: 2,
+                                  ),
+                                  BoxShadow(
+                                    color: Color(0x4D000000),
+                                    offset: Offset(2, 2),
+                                    blurRadius: 8,
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 20.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12.r),
+                                      border: Border.all(
+                                        color: AppColors.optionsTextColor,
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'A',
+                                        style: TextStyle(
+                                          color: AppColors.optionsTextColor,
+                                          fontSize: 12.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 9.w,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      "The peace in the early mornings",
+                                      style: TextStyle(
+                                        fontSize: 12.sp,
+                                        color: AppColors.optionsTextColor,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                    ),
+                    SizedBox(
+                      height: 11.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Pick your option.',
+                              style: TextStyle(
+                                color: AppColors.headerTextColor,
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                            Text(
+                              'See who has a similar mind.',
+                              style: TextStyle(
+                                color: AppColors.headerTextColor,
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 8.87.h,
+                                horizontal: 12.8.w,
+                              ),
+                              width: 44.62.w,
+                              height: 44.62.h,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 2.2.w,
+                                  color: AppColors.primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(100.r),
+                              ),
+                              child: SvgPicture.asset(AppImages.microphone),
+                            ),
+                            SizedBox(
+                              width: 6.w,
+                            ),
+                            Container(
+                              width: 44.62.w,
+                              height: 44.62.h,
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                border: Border.all(
+                                  color: AppColors.primaryColor,
+                                ),
+                                borderRadius: BorderRadius.circular(100.r),
+                              ),
+                              child: Icon(
+                                Icons.arrow_forward_rounded,
+                                size: 34.r,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -165,8 +447,7 @@ class _HomeScreenState extends State<HomeScreen> {
       {required Widget icon, bool hasBadge = false}) {
     return BottomNavigationBarItem(
       icon: Container(
-        padding:
-            EdgeInsets.only(left: 9.w, top: 8.h, bottom: 8.h, right: 10.47),
+        padding: EdgeInsets.only(left: 9.w, right: 10.47),
         child: Stack(
           children: [
             icon,
