@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stroll_bonfire/utils/app_colors.dart';
 import 'package:stroll_bonfire/utils/app_images.dart';
+import 'package:stroll_bonfire/widgets/question_options.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -108,7 +109,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         SvgPicture.asset(
                           AppImages.userIcon,
-                          color: Colors.white,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
                           width: 20.w,
                         ),
                         SizedBox(
@@ -136,17 +140,17 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               height: 350.h,
               decoration: BoxDecoration(
-                // image: DecorationImage(
-                //   image: AssetImage(AppImages.fadeBackground),
-                //   fit: BoxFit.fill,
-                // ),
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
                     const Color(0xFF000000),
                     const Color(0xFF000000),
-                    const Color(0xFF121518).withOpacity(0.9),
+                    const Color(0xFF000000),
+                    const Color(0xFF000000),
+                    const Color(0xFF000000),
+                    const Color(0xFF000000).withOpacity(0.9),
+                    const Color(0xFF000000).withOpacity(0.1),
                   ],
                 ),
               ),
@@ -268,79 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 14.h,
                     ),
-                    Expanded(
-                      child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 12.h,
-                            crossAxisSpacing: 12.w,
-                            childAspectRatio: 2.5,
-                          ),
-                          itemCount: 4,
-                          itemBuilder: (index, context) {
-                            return Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10.w, vertical: 13.h),
-                              decoration: BoxDecoration(
-                                color: AppColors.optionsCardColor,
-                                borderRadius: BorderRadius.circular(12.r),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color(0x4D000000),
-                                    offset: Offset(-1, -1),
-                                    blurRadius: 2,
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0x4D484848),
-                                    offset: Offset(1, 1),
-                                    blurRadius: 2,
-                                  ),
-                                  BoxShadow(
-                                    color: Color(0x4D000000),
-                                    offset: Offset(2, 2),
-                                    blurRadius: 8,
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(
-                                    width: 20.w,
-                                    height: 20.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.r),
-                                      border: Border.all(
-                                        color: AppColors.optionsTextColor,
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        'A',
-                                        style: TextStyle(
-                                          color: AppColors.optionsTextColor,
-                                          fontSize: 12.sp,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 9.w,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      "The peace in the early mornings",
-                                      style: TextStyle(
-                                        fontSize: 12.sp,
-                                        color: AppColors.optionsTextColor,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            );
-                          }),
-                    ),
+                    const QuestionOptions(),
                     SizedBox(
                       height: 11.h,
                     ),
@@ -428,53 +360,60 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: SvgPicture.asset(AppImages.pokerCards),
         ),
         _buildBottomNavBarItem(
-          icon: SvgPicture.asset(AppImages.flameIcon),
-          hasBadge: true,
-        ),
+            icon: SvgPicture.asset(AppImages.flameIcon),
+            hasBadge: true,
+            badgeAmount: "100"),
         _buildBottomNavBarItem(
           icon: SvgPicture.asset(AppImages.chatIcon),
           hasBadge: true,
+          badgeAmount: '10',
         ),
         _buildBottomNavBarItem(
-          icon: SvgPicture.asset(AppImages.userIcon),
-          hasBadge: true,
+          icon: SvgPicture.asset(
+            AppImages.userIcon,
+            width: 34,
+          ),
         ),
       ],
     );
   }
 
-  BottomNavigationBarItem _buildBottomNavBarItem(
-      {required Widget icon, bool hasBadge = false}) {
+  BottomNavigationBarItem _buildBottomNavBarItem({
+    required Widget icon,
+    bool hasBadge = false,
+    String badgeAmount = '',
+  }) {
     return BottomNavigationBarItem(
-      icon: Container(
-        padding: EdgeInsets.only(left: 9.w, right: 10.47),
-        child: Stack(
-          children: [
-            icon,
-            if (hasBadge)
-              Positioned(
-                top: 0.84.h,
-                child: Container(
-                  height: 13.h,
-                  padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(15.r),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '10',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 7.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
+      icon: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.only(right: 20.w),
+            child: icon,
+          ),
+          if (hasBadge)
+            Positioned(
+              top: 0.84.h,
+              left: 18.44.w,
+              child: Container(
+                height: 13.h,
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+                decoration: BoxDecoration(
+                  color: AppColors.primaryColor,
+                  borderRadius: BorderRadius.circular(15.r),
+                ),
+                child: Center(
+                  child: Text(
+                    badgeAmount,
+                    style: TextStyle(
+                      color: AppColors.textBlack,
+                      fontSize: 7.sp,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
               ),
-          ],
-        ),
+            ),
+        ],
       ),
       label: '',
     );
