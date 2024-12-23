@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stroll_bonfire/home/home_screen.dart';
 import 'package:stroll_bonfire/utils/app_colors.dart';
 
@@ -11,14 +13,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Stroll Bonfire",
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      builder: (context, child) {
+        return MaterialApp(
+          title: "Stroll Bonfire",
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+            textTheme: GoogleFonts.poppinsTextTheme(),
+            useMaterial3: true,
+          ),
+          home: child,
+        );
+      },
+      child: const HomeScreen(),
     );
   }
 }
