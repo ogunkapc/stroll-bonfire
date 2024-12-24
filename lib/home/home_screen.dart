@@ -138,7 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
             left: 0,
             right: 0,
             child: Container(
-              height: 350.h,
+              height: 360.h,
+              width: double.infinity,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
@@ -155,40 +156,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 7.h),
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border:
-                              Border.all(color: AppColors.bottomNavBarColor)),
+                    SizedBox(
+                      height: 105.h,
+                      width: double.infinity,
                       child: Stack(
                         children: [
-                          Positioned(
-                            top: 36.h,
-                            left: 69.w,
-                            right: 0,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'What is your favorite time of the day?',
-                                    style: TextStyle(
-                                      color: AppColors.questionTextColor,
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                              color: AppColors.questionTextColor,
-                            )),
+                          SizedBox(
                             width: 170.w,
                             child: Stack(
                               children: [
@@ -236,22 +213,40 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Container(
-                                  height: 66.h,
+                                  height: 60.h,
                                   width: 60.w,
                                   margin: EdgeInsets.only(left: 11.w),
                                   padding: EdgeInsets.all(5.r),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: AppColors.textBlack,
-                                    image: DecorationImage(
-                                        image: AssetImage(AppImages.joeyImage)),
                                   ),
-                                  // child: Image.asset(
-                                  //   AppImages.joeyImage,
-                                  //   fit: BoxFit.cover,
-                                  // ),
+                                  child: ClipRRect(
+                                    clipBehavior: Clip.hardEdge,
+                                    borderRadius: BorderRadius.circular(100.r),
+                                    child: Image.asset(
+                                      AppImages.joeyImage,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 )
                               ],
+                            ),
+                          ),
+                          Positioned(
+                            top: 36.h,
+                            left: 72.w,
+                            right: 5.w,
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Text(
+                                'What is your favorite time of the day?',
+                                style: TextStyle(
+                                  color: AppColors.questionTextColor,
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -260,17 +255,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: 9.h,
                     ),
-                    Text(
-                      '"Mine is the peace in the morning."',
-                      style: TextStyle(
-                        color: AppColors.answerTextColor,
-                        fontSize: 12.sp,
-                        fontStyle: FontStyle.italic,
+                    Center(
+                      child: Text(
+                        '"Mine is the peace in the morning."',
+                        style: TextStyle(
+                          color: AppColors.answerTextColor,
+                          fontSize: 12.sp,
+                          fontStyle: FontStyle.italic,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 14.h,
                     ),
                     const QuestionOptions(),
                     SizedBox(
