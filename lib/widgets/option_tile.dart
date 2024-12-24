@@ -13,9 +13,11 @@ class OptionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
+    bool isLargeScreen = width > 700;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
+      padding: EdgeInsets.symmetric(
+          horizontal: isLargeScreen ? 5 : 10.w, vertical: isLargeScreen ? 5 : 13.h),
       decoration: BoxDecoration(
         color: AppColors.optionsCardColor,
         borderRadius: BorderRadius.circular(12.r),
@@ -64,25 +66,25 @@ class OptionTile extends StatelessWidget {
             child: Center(
               child: Text(
                 option.label,
-                style: const TextStyle(
+                style: TextStyle(
                   color: AppColors.optionsTextColor,
-                  fontSize: 12,
+                  fontSize: 12.spMin,
                 ),
               ),
             ),
           ),
           SizedBox(
-            width: width > 600 ? 8.w : 9.w,
+            width: width > 600 ? 8 : 9.w,
           ),
           Expanded(
             child: Text(
               option.text,
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: 12.spMin,
                 color: AppColors.optionsTextColor,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

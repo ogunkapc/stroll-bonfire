@@ -28,10 +28,14 @@ class _QuestionOptionsState extends State<QuestionOptions> {
     return Expanded(
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,
+          crossAxisCount: MediaQuery.of(context).size.width > 850 ? 4 : 2,
           mainAxisSpacing: 12.h,
-          crossAxisSpacing: width > 600 ? 15.w : 12.w,
-          childAspectRatio: width > 600 ? 1.5.r : 2.5.r,
+          crossAxisSpacing: width > 700 ? 12 : 12.w,
+          childAspectRatio: width > 450
+              ? 2.8
+              : width > 700
+                  ? 1.2
+                  : 2.5.r,
         ),
         itemCount: options.length,
         itemBuilder: (context, index) {
