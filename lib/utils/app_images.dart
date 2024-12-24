@@ -3,7 +3,6 @@ class AppImages {
 
   //! Images
   static const String background = 'assets/images/background_image.png';
-  static const String fadeBackground = 'assets/images/bottom_gradient.jpg';
   static const String joeyImage = 'assets/images/Joey.png';
 
   //! Icons
