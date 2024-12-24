@@ -12,6 +12,8 @@ class OptionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
       decoration: BoxDecoration(
@@ -42,10 +44,12 @@ class OptionTile extends StatelessWidget {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            width: 20.w,
-            height: 20.h,
+            width: 20,
+            height: 20,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: option.isSelected
@@ -60,21 +64,21 @@ class OptionTile extends StatelessWidget {
             child: Center(
               child: Text(
                 option.label,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.optionsTextColor,
-                  fontSize: 12.sp,
+                  fontSize: 12,
                 ),
               ),
             ),
           ),
           SizedBox(
-            width: 9.w,
+            width: width > 600 ? 8.w : 9.w,
           ),
           Expanded(
             child: Text(
               option.text,
-              style: TextStyle(
-                fontSize: 12.sp,
+              style: const TextStyle(
+                fontSize: 12,
                 color: AppColors.optionsTextColor,
               ),
             ),
