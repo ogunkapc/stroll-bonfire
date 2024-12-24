@@ -10,17 +10,23 @@ class QuestionSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 105.h,
+    final double width = MediaQuery.of(context).size.width;
+    bool isLargeScreen = width > 700;
+
+    return Container(
+      height: isLargeScreen ? 115.h : 100.h,
       width: double.infinity,
+      margin: EdgeInsets.only(
+        top: isLargeScreen ? 50.h : 0,
+      ),
       child: Stack(
         children: [
           SizedBox(
-            width: 170.w,
+            width: isLargeScreen ? 130.w : 170.w,
             child: Stack(
               children: [
                 Positioned(
-                  left: 50.w,
+                  left: isLargeScreen ? 40.w : 50.w,
                   top: 7.h,
                   right: 0,
                   child: Row(
@@ -50,7 +56,7 @@ class QuestionSection extends StatelessWidget {
                             style: TextStyle(
                               color: AppColors.questionTextColor,
                               fontWeight: FontWeight.w700,
-                              fontSize: 11.sp,
+                              fontSize: isLargeScreen ? 15.spMin : 11.sp,
                             ),
                             textAlign: TextAlign.end,
                           ),
@@ -70,10 +76,10 @@ class QuestionSection extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     clipBehavior: Clip.hardEdge,
-                    borderRadius: BorderRadius.circular(100.r),
+                    borderRadius: BorderRadius.circular(250.r),
                     child: Image.asset(
                       AppImages.joeyImage,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
@@ -82,15 +88,19 @@ class QuestionSection extends StatelessWidget {
           ),
           Positioned(
             top: 36.h,
-            left: 72.w,
-            right: 5.w,
+            left: isLargeScreen ? 55.w : 72.w,
+            right: 8.w,
             child: SizedBox(
               width: double.infinity,
               child: Text(
                 'What is your favorite time of the day?',
                 style: TextStyle(
                   color: AppColors.questionTextColor,
-                  fontSize: 20.sp,
+                  fontSize: MediaQuery.of(context).size.width > 400
+                      ? 22.spMin
+                      : isLargeScreen
+                          ? 25.spMin
+                          : 20.sp,
                   fontWeight: FontWeight.w700,
                 ),
               ),

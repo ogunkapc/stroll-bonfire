@@ -112,21 +112,26 @@ class _MainScreenState extends State<MainScreen> {
           ),
           if (hasBadge)
             Positioned(
-              top: 0.84.h,
-              left: 18.44.w,
+              top: 0.84,
+              left: 18.44,
               child: Container(
                 height: 13.h,
-                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical:
+                        MediaQuery.of(context).size.width > 600 ? 0 : 2.w),
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor,
-                  borderRadius: BorderRadius.circular(15.r),
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: Center(
                   child: Text(
                     badgeAmount,
                     style: TextStyle(
                       color: AppColors.textBlack,
-                      fontSize: 7.sp,
+                      fontSize: MediaQuery.of(context).size.width > 600
+                          ? 13.spMin
+                          : 7.sp,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
