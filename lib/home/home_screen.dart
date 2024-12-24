@@ -208,18 +208,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                             left: 10.w,
                                           ),
                                           decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.r),
-                                              color: const Color(0xFF121518)
-                                                  .withOpacity(0.9),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  offset: const Offset(0, 14),
-                                                  blurRadius: 16.r,
-                                                  color:
-                                                      const Color(0x4D000000),
-                                                )
-                                              ]),
+                                            borderRadius:
+                                                BorderRadius.circular(10.r),
+                                            color: const Color(0xFF121518)
+                                                .withOpacity(0.9),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                offset: const Offset(0, 14),
+                                                blurRadius: 16.r,
+                                                color: const Color(0x4D000000),
+                                              )
+                                            ],
+                                          ),
                                           child: Text(
                                             'Angelina, 28',
                                             style: TextStyle(
@@ -242,14 +242,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: EdgeInsets.all(5.r),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xFF121517),
+                                    color: AppColors.textBlack,
+                                    image: DecorationImage(
+                                        image: AssetImage(AppImages.joeyImage)),
                                   ),
-                                  child: ClipOval(
-                                    child: Image.asset(
-                                      AppImages.joeyImage,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                  ),
+                                  // child: Image.asset(
+                                  //   AppImages.joeyImage,
+                                  //   fit: BoxFit.cover,
+                                  // ),
                                 )
                               ],
                             ),
